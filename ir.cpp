@@ -2,8 +2,9 @@
 #include <map>
 #include <vector>
 #include "ReceiverIR.h"
+#include "genericMyVector.h"
 using namespace pxt;
-typedef vector<Action> vA;
+typedef genericMyVector<Action> vA;
 
 enum class Pins{
   P0=  3,
