@@ -4,7 +4,7 @@
 #include "ReceiverIR.h"
 #include "genericMyVector.h"
 using namespace pxt;
-typedef genericMyVector<Action> vA;
+// typedef genericMyVector<Action> vA;
 
 enum class Pins{
   P0=  3,
@@ -55,7 +55,7 @@ enum class RemoteButton {
 //% color=50 weight=19
 //% icon="\uf1eb"
 namespace Mbit_IR { 
-  map<RemoteButton, vA> actions;
+  map<RemoteButton, genericMyVector> actions;
   map<RemoteButton, uint32_t> lastact;
   Timer tsb; 
   uint8_t buf[32];
@@ -73,7 +73,7 @@ namespace Mbit_IR {
     actions[btn].push_back(body);
   }
 
-  void cA(vA runner){for(int i=0;i<runner.size();i++){runAction0(runner[i]);} }
+  void cA(genericMyVector runner){for(int i=0;i<runner.size();i++){runAction0(runner[i]);} }
 
   void onReceivable(){
     int x = rx->getData(&fmt, buf, 32 * 8);
